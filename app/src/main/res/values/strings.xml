@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PurseLegioner</string>
+    <string name="currentBalance">Текущий баланс</string>
+    <string name="currentBalanceText">0</string>
 </resources>
