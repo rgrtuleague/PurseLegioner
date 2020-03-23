@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".MainActivity">
 
     <TextView
@@ -11,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="@string/currentBalance"
+        android:text="@string/current_balance_title"
         android:textSize="36sp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -23,20 +24,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/currentBalanceText"
+        android:background="#00000000"
+        android:text="@string/current_balance_text"
         android:textSize="60sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentBalanceTitle" />
 
-    <EditText
-        android:id="@+id/dateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/currentBalanceTitle"
+    <Button
+        android:id="@+id/buttonBalancePlus"
+        android:layout_width="180sp"
+        android:layout_height="80sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:background="#F214EF5B"
+        android:text="@string/button_balance_plus"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentBalanceText" />
+
+    <Button
+        android:id="@+id/buttonBalanceMinus"
+        android:layout_width="180sp"
+        android:layout_height="80sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:background="#D3ED0A0A"
+        android:text="@string/button_balance_minus"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/currentBalanceText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
