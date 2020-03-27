@@ -22,8 +22,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 fun minusBalance(button : Button, currentBalanceText : TextView, inputBalanceChange : EditText) {
     button.setOnClickListener() {
-        //val currentBalance = currentBalanceText.text.toString().format("%.2f", it).toDouble()  // текущее значение баланса
-        val currentBalance = currentBalanceText.getDoubleTypeValueTextView() // не работает.
+        val currentBalance = currentBalanceText.text.toString().format("%.2f", it).toDouble()  // текущее значение баланса
+        //val currentBalance = currentBalanceText.getDoubleTypeValueTextView() // не работает.
         if (!inputBalanceChange.text.isNullOrEmpty()) {
             val value = inputBalanceChange.text.toString().format("%.2f", it)
             val regex = "^\\d+(\\.?\\d{1,2}){0,1}\$".toRegex()
