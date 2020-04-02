@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 import androidx.room.Query
 
 @Entity (tableName = "balance_table")
-class Room(@PrimaryKey @ColumnInfo(name = "currentBalance") var currentBalance: String) {
+class BalanceRoom(@PrimaryKey @ColumnInfo(name = "currentBalance") var currentBalance: String) {
 
 }

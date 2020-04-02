@@ -5,4 +5,5 @@
     <string name="button_balance_plus">Пополнить</string>
     <string name="button_balance_minus">Потратить</string>
     <string name="value_of_change">Введите сумму</string>
+    <string name="add_word">-</string>
 </resources>
