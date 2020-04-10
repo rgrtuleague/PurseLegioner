@@ -1,11 +1,19 @@
 package com.example.purselegioner.database
 
 import androidx.room.ColumnInfo
+import androidx.room.Database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.Query
 
-@Entity (tableName = "balance_table")
-class BalanceRoom(@PrimaryKey @ColumnInfo(name = "currentBalance") var currentBalance: String) {
-
-}
+@Entity (tableName = "main_table")
+class MainTable(
+    @PrimaryKey
+    @ColumnInfo(name =  "id") var idTransaction: String,
+    @ColumnInfo(name =  "time of transaction") var timeTransaction: String,
+    @ColumnInfo(name =  "price") var price: String,
+    @ColumnInfo(name =  "balance") var currentBalance: String,
+    @ColumnInfo(name =  "seller") var seller: String,
+    @ColumnInfo(name =  "buying place") var placeBuying: String,
+    @ColumnInfo(name = "credit card") var creditCard: String,
+    @ColumnInfo(name = "type of products") var typeOfProduct: String
+)

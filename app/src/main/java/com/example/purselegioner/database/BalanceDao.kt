@@ -7,15 +7,15 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
-interface DaoBalance {
+interface BalanceDao {
 
-    @Query("SELECT currentBalance from balance_table")
-    fun getCurrentBalance(): LiveData<List<BalanceRoom>>
+    @Query("SELECT * from main_table")
+    fun getCurrentBalance(): LiveData<List<MainTable>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(balance: BalanceRoom)
+    suspend fun insert(balance: MainTable)
 
-    @Query("DELETE FROM balance_table")
+    @Query("DELETE FROM main_table")
     suspend fun deleteAll()
 
 }
