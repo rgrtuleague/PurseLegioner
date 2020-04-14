@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface BalanceDao {
 
-    @Query("SELECT * from main_table")
+    @Query("SELECT price from main_table")
     fun getCurrentBalance(): LiveData<List<MainTable>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

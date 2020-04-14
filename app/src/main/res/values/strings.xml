@@ -6,4 +6,8 @@
     <string name="button_balance_minus">Потратить</string>
     <string name="value_of_change">Введите сумму</string>
     <string name="add_word">-</string>
+
+    <string name="hint_word">Cell...</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">row(cell) not saved because it is empty.</string>
 </resources>
