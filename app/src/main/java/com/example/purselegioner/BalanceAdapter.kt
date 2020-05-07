@@ -1,18 +1,27 @@
 package com.example.purselegioner
 
 import android.content.Context
+import android.database.Cursor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SimpleCursorAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.purselegioner.database.MainTable
 
-class BalanceListAdapter internal constructor(
-    context: Context
-) : RecyclerView.Adapter<BalanceListAdapter.WordViewHolder>() {
+class BalanceAdapter(
+    context : Context,
+    layout : Int,
+    c : Cursor,
+    from : Array<String>,
+    to : IntArray,
+    flags : Int
+) : SimpleCursorAdapter(context, layout, c, from, to, flags)
 
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
+class BalanceAdapter2(private val balanceValue : String) : TextView.Adapter<BalanceAdapter2.ViewHolder>() {}
+
+    /*private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var rows = emptyList<MainTable>() // Cached copy of words
 
     inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,5 +43,4 @@ class BalanceListAdapter internal constructor(
         notifyDataSetChanged()
     }
 
-    override fun getItemCount() = rows.size
-}
+    override fun getItemCount() = rows.size*/

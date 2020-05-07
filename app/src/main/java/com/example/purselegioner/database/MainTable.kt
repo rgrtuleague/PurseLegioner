@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity (tableName = "main_table")
 class MainTable(
     @PrimaryKey
-    @ColumnInfo(name =  "id") var idTransaction: String,
+    @ColumnInfo(name =  "_id") var _id: String,
     @ColumnInfo(name =  "time of transaction") var timeTransaction: String,
     @ColumnInfo(name =  "price") var price: String,
     @ColumnInfo(name =  "balance") var currentBalance: String,

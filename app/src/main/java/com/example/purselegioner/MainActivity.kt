@@ -2,6 +2,7 @@ package com.example.purselegioner
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,10 +20,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = BalanceListAdapter(this)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val balanceTextView = findViewById<TextView>(R.id.currentBalanceText)
+        val adapter = BalanceAdapter(this)
+        balanceTextView.adapter = adapter
+        balanceTextView.layoutManager = LinearLayoutManager(this)
 
         rowViewModel = ViewModelProvider(this).get(PurseViewModel::class.java)
 

@@ -23,11 +23,11 @@ abstract class PurseDatabase : RoomDatabase() {
             super.onOpen(db)
             INSTANCE?.let { database ->
                 scope.launch {
-                    var balanceDao = database.balanceDao()
+                    val balanceDao = database.balanceDao()
 
                     balanceDao.deleteAll()
 
-                    var row = MainTable("0001",
+                    val row = MainTable("0001",
                         "2020/04/13-12:59:34",
                         "+456.50",
                         "540.50",
