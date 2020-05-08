@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by GlobalScope {
                 db.getCurrentBalance()
             }.await()
 
-            d("sergio", "prices =  ${prices.price}")
+            d("sergio", "prices =  ${prices.size}")
         }
 
     }

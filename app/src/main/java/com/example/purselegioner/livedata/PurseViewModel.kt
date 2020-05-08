@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 class PurseViewModel (application : Application) : AndroidViewModel(application) {
     private val repository : PurseRepository
 
-    val allPrice: LiveData<List<MainTable>>
+    val allPrice: MutableList<MainTable>
 
     init {
         val balancesDao = PurseDatabase.getDatabase(application, viewModelScope).balanceDao()

@@ -9,7 +9,7 @@ class PurseRepository (private val balanceDao: BalanceDao) {
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
 
-    val allPrice: LiveData<List<MainTable>> = balanceDao.getCurrentBalance()
+    val allPrice: MutableList<MainTable> = balanceDao.getCurrentBalance()
 
     suspend fun insert(row: MainTable) {
         balanceDao.insert(row)
