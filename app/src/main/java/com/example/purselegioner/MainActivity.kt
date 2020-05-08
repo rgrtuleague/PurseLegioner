@@ -1,40 +1,51 @@
 package com.example.purselegioner
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log.d
 import android.widget.TextView
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.purselegioner.livedata.PurseViewModel
-import kotlinx.coroutines.InternalCoroutinesApi
+import com.example.purselegioner.database.BalanceDao
+import com.example.purselegioner.database.MainTable
+import com.example.purselegioner.database.PurseDatabase
+import com.example.purselegioner.repository.PurseRepository
+import kotlinx.coroutines.*
 
-class MainActivity : AppCompatActivity() {
 
-    @InternalCoroutinesApi
-    private lateinit var rowViewModel: PurseViewModel
+class MainActivity : AppCompatActivity(), CoroutineScope by GlobalScope {
 
+     val table : MainTable = MainTable(
+         null,
+         "time",
+         "price",
+         "balance",
+         "seller",
+         "place",
+         "card",
+         "type"
+     )
     @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val balanceTextView = findViewById<TextView>(R.id.currentBalanceText)
-        val adapter = BalanceAdapter(this)
-        balanceTextView.adapter = adapter
-        balanceTextView.layoutManager = LinearLayoutManager(this)
 
-        rowViewModel = ViewModelProvider(this).get(PurseViewModel::class.java)
+        val scope = CoroutineScope(Job() + Dispatchers.Main)
 
-        rowViewModel.allPrice.observe(this, Observer { rows ->
-            rows?.let { } // see CONNECT WITH THE DATA chapter
-        })
+        val job = scope.launch(Dispatchers.IO) {
+            val db = PurseDatabase.getDatabase(applicationContext, CoroutineScope(coroutineContext))
+                .balanceDao()
 
-       // addBalance(buttonBalancePlus, currentBalanceText, inputBalanceChange)
-       // minusBalance(buttonBalanceMinus, currentBalanceText, inputBalanceChange)
+            db.insert(table)
 
-        // android:text="@string/current_balance_text"
+            val prices = async {
+                db.getCurrentBalance()
+            }.await()
+
+            d("sergio", "prices =  ${prices.price}")
+        }
+
     }
 }
 

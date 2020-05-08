@@ -10,7 +10,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.internal.synchronized
 import kotlinx.coroutines.launch
 
-@Database(entities = [Room::class], version = 1, exportSchema = false )
+@Database(entities = [MainTable::class], version = 1 )
 abstract class PurseDatabase : RoomDatabase() {
 
     abstract fun balanceDao() : BalanceDao
@@ -27,7 +27,7 @@ abstract class PurseDatabase : RoomDatabase() {
 
                     balanceDao.deleteAll()
 
-                    val row = MainTable("0001",
+                    val row = MainTable(null,
                         "2020/04/13-12:59:34",
                         "+456.50",
                         "540.50",

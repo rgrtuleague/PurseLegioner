@@ -19,7 +19,7 @@ class BalanceAdapter(
     flags : Int
 ) : SimpleCursorAdapter(context, layout, c, from, to, flags)
 
-class BalanceAdapter2(private val balanceValue : String) : TextView.Adapter<BalanceAdapter2.ViewHolder>() {}
+//class BalanceAdapter2(private val balanceValue : String) : TextView.Adapter<BalanceAdapter2.ViewHolder>() {}
 
     /*private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var rows = emptyList<MainTable>() // Cached copy of words
