@@ -25,17 +25,17 @@ abstract class PurseDatabase : RoomDatabase() {
                 scope.launch {
                     val balanceDao = database.balanceDao()
 
-                    balanceDao.deleteAll()
+                        //  balanceDao.deleteAll()
 
                     val row = MainTable(null,
                         "2020/04/13-12:59:34",
-                        "+456.50",
-                        "540.50",
+                        "+300.45",
+                        100.00,
                         "DA",
                         "Fryazino Nahimova",
                         "Tinkov black",
                         "food")
-                    balanceDao.insert(row)
+                   // balanceDao.insert(row)
                 }
             }
         }

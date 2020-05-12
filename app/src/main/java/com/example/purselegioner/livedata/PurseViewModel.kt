@@ -13,6 +13,9 @@ import kotlinx.coroutines.launch
 
 @InternalCoroutinesApi
 class PurseViewModel (application : Application) : AndroidViewModel(application) {
+
+
+
     private val repository : PurseRepository
 
     val allPrice: MutableList<MainTable>

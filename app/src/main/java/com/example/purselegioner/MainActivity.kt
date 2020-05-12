@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by GlobalScope {
      val table : MainTable = MainTable(
          null,
          "time",
-         "price",
-         "balance",
+         "+20",
+         15.00,
          "seller",
          "place",
          "card",
@@ -33,9 +33,17 @@ class MainActivity : AppCompatActivity(), CoroutineScope by GlobalScope {
 
         val scope = CoroutineScope(Job() + Dispatchers.Main)
 
-        val job = scope.launch(Dispatchers.IO) {
+        /*val job =*/ scope.launch(Dispatchers.IO) {
             val db = PurseDatabase.getDatabase(applicationContext, CoroutineScope(coroutineContext))
                 .balanceDao()
+
+            val lastBalanceRow = async {
+                try {
+                    db.getCurrentBalance().last().currentBalance
+                } catch (e: Exception) {
+                    0.00
+                }
+            }.await()
 
             db.insert(table)
 
@@ -44,6 +52,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by GlobalScope {
             }.await()
 
             d("sergio", "prices =  ${prices.size}")
+            d("sergio", "balance = ${lastBalanceRow} + ${prices.last().currentBalance}")
         }
 
     }
