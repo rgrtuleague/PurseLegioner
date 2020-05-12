@@ -11,6 +11,7 @@ import com.example.purselegioner.database.PurseDatabase
 import com.example.purselegioner.repository.PurseRepository
 import kotlinx.coroutines.*
 
+/* https://android.jlelse.eu/android-threads-coroutines-for-beginners-f39abc90d927 */
 
 class MainActivity : AppCompatActivity(), CoroutineScope by GlobalScope {
 
