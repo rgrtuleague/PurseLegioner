@@ -10,7 +10,7 @@ import androidx.room.Query
 interface BalanceDao {
 
     @Query("SELECT * FROM MainTable")
-    fun getCurrentBalance(): MutableList<MainTable>
+    fun getCurrentBalanceTable(): MutableList<MainTable>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(balance: MainTable)

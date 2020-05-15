@@ -29,13 +29,13 @@ abstract class PurseDatabase : RoomDatabase() {
 
                     val row = MainTable(null,
                         "2020/04/13-12:59:34",
-                        "+300.45",
-                        100.00,
+                        0.00,
+                        0.00,
                         "DA",
                         "Fryazino Nahimova",
                         "Tinkov black",
                         "food")
-                   // balanceDao.insert(row)
+                    //balanceDao.insert(row)
                 }
             }
         }

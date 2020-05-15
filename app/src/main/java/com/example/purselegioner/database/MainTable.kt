@@ -10,7 +10,7 @@ data class MainTable(
     @PrimaryKey
     val _id: Int?,
     @ColumnInfo(name =  "time of transaction") val timeTransaction: String,
-    @ColumnInfo(name =  "price") val price: String,
+    @ColumnInfo(name =  "price") val price: Double,
     @ColumnInfo(name =  "balance") val currentBalance: Double,
     @ColumnInfo(name =  "seller") val seller: String,
     @ColumnInfo(name =  "buying place") val placeBuying: String,
