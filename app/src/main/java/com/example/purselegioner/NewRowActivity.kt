@@ -6,10 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
+import android.widget.EditText
 
 class NewRowActivity : AppCompatActivity() {
 
-    private lateinit var editRowView: EditText<String>
+   /* private lateinit var editRowView: EditText<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,5 +31,5 @@ class NewRowActivity : AppCompatActivity() {
     }
     companion object  {
         const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
-    }
+    }*/
 }

@@ -1,17 +1,19 @@
 package com.example.purselegioner
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log.d
 import android.widget.TextView
-import com.example.purselegioner.database.MainTable
 import com.example.purselegioner.database.PurseDatabase
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 
 /* https://android.jlelse.eu/android-threads-coroutines-for-beginners-f39abc90d927 */
 
 class MainActivity : AppCompatActivity(), CoroutineScope by GlobalScope {
 
+    @SuppressLint("SetTextI18n")
     @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,20 +21,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope by GlobalScope {
          * 1. Подготовить Coroutine. Получить значение из Database. Если база данных отсутствует, создать ее(уже реализовано),
          *    тогда текущий баланс = 0
          * */
-        val scope = CoroutineScope(Job() + Dispatchers.IO)
-        var balance = 0.00
-        scope.async {
-            balance = 7.00//getCurrentBalance()
 
-        }
-
-        /**
-         * 2. setContentView(Activity)
-         * */
+        val balance = PurseDatabase.currentbalance
         setContentView(R.layout.activity_main)
         val balanceTextView = findViewById<TextView>(R.id.currentBalanceText)
         balanceTextView.text = balance.toString()
-
 
         /**
          * 3. Ввести обработку кнопок ДОБАВИТЬ и ПОТРАТИТЬ.
@@ -41,10 +34,36 @@ class MainActivity : AppCompatActivity(), CoroutineScope by GlobalScope {
          *  - обновить баланс на экране
          * */
 
-    }
+        ButtonsHandler.addBalance(buttonBalancePlus, balanceTextView, inputBalanceChange)
+        /*var currentBalance: Double
 
-    private suspend fun getCurrentBalance() {}
+        buttonBalancePlus.setOnClickListener() {
+            currentBalance = try {
+                currentBalanceText.text.toString().toDouble()  // текущее значение баланса
+            } catch (e: Exception) {
+                -1.00
+            }
+            d("sergio", "currentBalance = $currentBalance")
+            if (inputBalanceChange.text.toString() != "") {
+                val value = inputBalanceChange.text.toString()
+                val regex = "^\\d+(\\.?\\d{1,2}){0,1}\$".toRegex()
+                if (regex.matches(value)) {
+                    val inputValueChange = inputBalanceChange.text.toString().toDouble()
+                    val result: String =
+                        String.format("%.2f", (currentBalance + inputValueChange))
+                    currentBalanceText.text = result
+                }
+            } else {
+                currentBalanceText.text = currentBalance.toString()
+            }
+            inputBalanceChange.setText("")
+        }*/
+
+    }
 }
+
+
+
     /*fun other() {
 
         scope.launch(Dispatchers.IO) {
